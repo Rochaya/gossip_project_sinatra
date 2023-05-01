@@ -1,5 +1,5 @@
 <html>
-    <head>
+    <head><center>
     <title>The Gossip Project</title>
     </head>
     <body>
@@ -7,7 +7,7 @@
         <p>Vous pouvez créer un nouveau potin en <a href="/gossips/new/">cliquant ici</a>.</p>
         <% gossips.each_with_index do |g, i| %>
             <p>
-            potin de <%= g[0] %> : <%= g[1] %>
+            <a href="/gossips/<%= i %>/"> potin de <%= g[0]%></a>
             </p>
         <% end %>
     </body>

@@ -8,7 +8,16 @@ class ApplicationController < Sinatra::Base
     end
     
     post '/gossips/new/' do
-      Gossip.new(params["gossip_author"], params["gossip_content"]).save
+      Gossip.new(params["gossip_name"], params["gossip_content"]).save
       redirect "/"
+    end
+
+    get '/gossips/:id/' do
+      "Ceci est la page #{params["id"]}"
+      if Gossip.find(params["id"])[0] != "" && Gossip.find(params["id"])[1] != ""
+        erb :show, locals: {array_gossip: Gossip.find(params["id"]), gossip_id: params["id"]}
+      else
+        redirect "/"
+      end
     end
 end
